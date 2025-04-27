@@ -53,6 +53,7 @@ class CalculatorPage : AppCompatActivity() {
         viewTable.text = ""
     }
 
+
     private fun getEqual() {
         val text = viewTable.text.toString()
         val regex = Regex("(\\d+)([+\\-*/])(\\d+)")
