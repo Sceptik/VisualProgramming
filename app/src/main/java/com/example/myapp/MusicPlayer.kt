@@ -163,7 +163,7 @@ class MusicPlayer : AppCompatActivity() {
         prevButton = findViewById(R.id.B_PREV)
         TrackDuration = findViewById(R.id.TrackDuration)
         CurTime = findViewById(R.id.CurTime)
-        listView = findViewById(R.id.musicListView) // ListView, потом доделать таблицу "плейлист"
+        listView = findViewById(R.id.musicListView)
 
         findViewById<Button>(R.id.B_back).setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

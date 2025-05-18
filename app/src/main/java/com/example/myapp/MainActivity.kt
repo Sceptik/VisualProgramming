@@ -27,5 +27,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, MusicPlayer::class.java)
             startActivity(intent)
         }
+        findViewById<Button>(R.id.B_Location).setOnClickListener{
+            val intent = Intent(this, Location::class.java)
+            startActivity(intent)
+        }
     }
 }
