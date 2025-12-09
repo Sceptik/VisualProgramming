@@ -8,6 +8,16 @@
     tools:context=".location">
 
     <TextView
+        android:id="@+id/bandwith"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="172dp"
+        app:layout_constraintEnd_toEndOf="@+id/Altitude"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Altitude"
+        app:layout_constraintTop_toBottomOf="@+id/Altitude" />
+
+    <TextView
         android:id="@+id/text5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,6 +53,36 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@+id/Altitude"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Altitude"
+        app:layout_constraintTop_toBottomOf="@+id/Altitude" />
+
+    <TextView
+        android:id="@+id/CellID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/Altitude"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Altitude"
+        app:layout_constraintTop_toBottomOf="@+id/Altitude" />
+
+    <TextView
+        android:id="@+id/pci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="@+id/Altitude"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Altitude"
+        app:layout_constraintTop_toBottomOf="@+id/Altitude" />
+
+    <TextView
+        android:id="@+id/rsrp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        app:layout_constraintEnd_toEndOf="@+id/Altitude"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/Altitude"
         app:layout_constraintTop_toBottomOf="@+id/Altitude" />
 
