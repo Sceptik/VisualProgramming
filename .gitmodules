@@ -1,0 +1,3 @@
+[submodule "visual_programming_server"]
+	path = visual_programming_server
+	url = https://github.com/Sceptik/visual_programming_server.git
