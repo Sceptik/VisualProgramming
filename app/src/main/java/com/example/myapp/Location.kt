@@ -233,12 +233,12 @@ class Location : AppCompatActivity() {
         val socket = context.socket(ZMQ.REQ)
 
         try{
-            socket.connect("tcp://192.168.133.53:2222")
+            socket.connect("tcp://192.168.108.53:2222")
             socket.setReceiveTimeOut(10000)
 
             val currentData  = readJsonFile()
 
-            if(currentData.isNotEmpty()){
+            if(currentData != "" && currentData.split("\n").size >= 20){
                 socket.send(currentData.toByteArray(ZMQ.CHARSET))
 
                 val reply = socket.recvStr()
@@ -246,9 +246,8 @@ class Location : AppCompatActivity() {
                     Log.d(log_tag, "client: server didn't response")
                 } else {
                     Log.d(log_tag, "client: received $reply")
+                    cleanJson()
                 }
-            }else {
-                Thread.sleep(5000)
             }
         } catch(e: Exception){
             Log.e(log_tag, "client error: ${e.message}")
@@ -263,12 +262,39 @@ class Location : AppCompatActivity() {
         val file = File(documentsDir, "all_data.json")
 
         if (file.exists()) {
-            return file.readText()
+            val reader = file.bufferedReader()
+            val result = StringBuilder()
+            var count = 0
+
+            var line = reader.readLine()
+            while (line != null && count < 20) {
+                if (result.isNotEmpty()) {
+                    result.append("\n")
+                }
+                result.append(line)
+                count++
+                line = reader.readLine()
+            }
+
+            reader.close()
+            return result.toString()
         } else {
-            return "Nothing to transmit"
+            return ""
         }
     }
 
+    private fun cleanJson(){
+        val documentsDir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
+        val file = File(documentsDir, "all_data.json")
+        if (file.exists()) {
+            val lines = file.readLines()
+            if (lines.size <= 20) {
+                file.writeText("")
+            } else {
+                file.writeText(lines.subList(20, lines.size).joinToString("\n"))
+            }
+        }
+    }
 
     private fun saveLocationDataToJSON(locationData: LocationData, networkData: NetworkData?) {
         val documentsDir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
